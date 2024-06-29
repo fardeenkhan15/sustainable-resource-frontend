@@ -22,12 +22,19 @@ const Register = () => {
             try {
                 const res = await axiosInstance.post('/auth/register', { name, email, password });
                 console.log('Response:', res);
-                localStorage.setItem('token', res.data.token);
-                setMessage('Registration successful!');
-                // Redirect or other actions
+                if (res.data.token) {
+                    localStorage.setItem('token', res.data.token);
+                    setMessage('Registration successful!');
+                } else {
+                    setMessage('Registration failed. No token received.');
+                }
             } catch (err) {
                 console.error('Error response:', err.response);
-                setMessage('Registration failed. Please try again.');
+                if (err.response && err.response.data) {
+                    setMessage(err.response.data.msg || 'Registration failed. Please try again.');
+                } else {
+                    setMessage('Registration failed. Please try again.');
+                }
             }
         }
     };
