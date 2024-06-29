@@ -5,12 +5,13 @@ import Login from './components/Login';
 import ResourceList from './components/ResourceList';
 import AddResource from './components/AddResource';
 import PrivateRoute from './components/PrivateRoute';
+import Navbar from './components/Navbar';
 
 function App() {
     return (
         <Router>
-            <div className="App">
-                <h1>Resource Management Dashboard</h1>
+            <Navbar />
+            <div className="container mx-auto p-4">
                 <Routes>
                     <Route path="/register" element={<Register />} />
                     <Route path="/login" element={<Login />} />

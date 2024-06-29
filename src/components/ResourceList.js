@@ -18,11 +18,14 @@ const ResourceList = () => {
     }, []);
 
     return (
-        <div>
-            <h2>Resources</h2>
-            <ul>
+        <div className="container mx-auto px-4">
+            <h2 className="text-2xl font-bold my-4">Resources</h2>
+            <ul className="space-y-4">
                 {resources.map(resource => (
-                    <li key={resource._id}>{resource.name} - {resource.type}</li>
+                    <li key={resource._id} className="p-4 bg-gray-100 rounded shadow">
+                        <h3 className="text-xl font-semibold">{resource.name}</h3>
+                        <p className="text-gray-600">{resource.type}</p>
+                    </li>
                 ))}
             </ul>
         </div>
