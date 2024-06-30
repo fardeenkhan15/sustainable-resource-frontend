@@ -1,3 +1,4 @@
+// src/components/Login.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../utils/axiosInstance';
@@ -37,19 +38,36 @@ const Login = () => {
     };
 
     return (
-        <div>
-            <form onSubmit={onSubmit}>
+        <div className="container mx-auto p-4">
+            <h2 className="text-2xl font-bold mb-4">Login</h2>
+            <form onSubmit={onSubmit} className="space-y-4">
                 <div>
-                    <label>Email</label>
-                    <input type="email" name="email" value={email} onChange={onChange} required />
+                    <label className="block text-sm font-medium text-gray-700">Email</label>
+                    <input
+                        type="email"
+                        name="email"
+                        value={email}
+                        onChange={onChange}
+                        className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                        required
+                    />
                 </div>
                 <div>
-                    <label>Password</label>
-                    <input type="password" name="password" value={password} onChange={onChange} required />
+                    <label className="block text-sm font-medium text-gray-700">Password</label>
+                    <input
+                        type="password"
+                        name="password"
+                        value={password}
+                        onChange={onChange}
+                        className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                        required
+                    />
                 </div>
-                <button type="submit">Login</button>
+                <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded">
+                    Login
+                </button>
             </form>
-            {message && <p>{message}</p>}
+            {message && <p className="mt-4 text-lg">{message}</p>}
         </div>
     );
 };
